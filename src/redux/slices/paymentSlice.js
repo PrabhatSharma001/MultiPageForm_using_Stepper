@@ -2,9 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState={
     cardinfo:"",
-    securitycode:"",
+    cardholdername:"",
+    cvv:"",
     expmonth:"",
-    expyear:""
+   
 }
 
 const paymentSlice=createSlice({
@@ -13,9 +14,10 @@ const paymentSlice=createSlice({
     reducers:{
         setPaymentDetails:(state,action)=>{
             state.cardinfo=action.payload.cardinfo;
-            state.securitycode=action.payload.securitycode;
+            state.cardholdername=action.payload.cardholdername;
+            state.cvv=action.payload.cvv;
             state.expmonth=action.payload.expmonth;
-            state.expyear=action.payload.expyear;
+          
         }
     }
 })

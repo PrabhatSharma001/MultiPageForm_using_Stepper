@@ -2,9 +2,10 @@
 import './App.css'
 import Stepper from './Stepper'
 import UserDetails from './Components/UserDetails'
-import PaymentInfo from './Components/PaymentInfo'
+// import PaymentInfo from './Components/PaymentInfo'
 import AddressDetails from './Components/AddressDetails'
 import Complete from './Components/Complete'
+import CreditCard from './Components/CreditCard'
 
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
 },
 {
   name:"Payment info",
-  Component:PaymentInfo,
+  Component:CreditCard,
   
 },
 {
@@ -37,7 +38,10 @@ function App() {
 ]
 
   return (
-     <Stepper stepsConfig={CHECKOUT_STEPS}/>
+    <div className='h-full p-8'>
+ <Stepper stepsConfig={CHECKOUT_STEPS}/>
+    </div>
+    
   )
 }
 

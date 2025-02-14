@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
+import SweetAlert2 from 'react-sweetalert2';
+
 
 const Stepper = ({ stepsConfig = [] }) => {
   const [currStep, setCurrStep] = useState(1);
   const [isComplete, setIsComplete] = useState(false);
-
+  const [swalProps, setSwalProps] = useState({});
   const [margins, setMargins] = useState({
     marginLeft: 0,
     marginRight: 0,
@@ -25,10 +27,20 @@ const Stepper = ({ stepsConfig = [] }) => {
     setCurrStep((prev) => {
       if (prev === stepsConfig.length) {
         setIsComplete(true);
-        
-        alert("congratulations form has been submitted ")
+     
+        // alert("congratulations form has been submitted ")
         return prev;
       }
+      // ++++++++++++++++++=new elif added   
+      else if(prev===stepsConfig.length-1){
+        setSwalProps({
+          show: true,
+          title: 'Complete !',
+          text: 'Congratulations your form has been submitted succesfully ',
+      });
+      // console.log("value of swalprop is ", swalProps)
+      }
+      // ++++++++++++++++++++++++++++++=
       return prev + 1;
     });
   };
@@ -56,6 +68,7 @@ const Stepper = ({ stepsConfig = [] }) => {
 
   return (
     <>
+      <SweetAlert2 {...swalProps} />
       <div className="stepper">
         {stepsConfig.map((step, index) => (
           <div
@@ -100,7 +113,7 @@ const Stepper = ({ stepsConfig = [] }) => {
         <button className="btn" onClick={handleNext}>
           {currStep === stepsConfig.length ? "Finish" : "Next"}
         </button>
-      )} */}
+      )}  */}
     </>
   );
 };
